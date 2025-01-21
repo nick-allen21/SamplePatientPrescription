@@ -27,8 +27,11 @@ final class Assignment1UITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let button = app.buttons["Add New Patient"]
+        XCTAssertTrue(button.exists, "Checking if the button actually exists")
+        button.tap()
+        let newScreen = app.staticTexts["Create Patient"]
+        XCTAssertTrue(newScreen.exists, "Check if the app navigated to correct new page after clicking button")
     }
 
     @MainActor
